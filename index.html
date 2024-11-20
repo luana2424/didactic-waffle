@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Carrera</title>
+</head>
+<body>
+    <h1>Bienvenido al Test de Carrera</h1>
+    <p>Este es un test para ayudarte a elegir una carrera.</p>
+    <form id="testForm">
+        <label for="pregunta1">¿Te gustan los números?</label><br>
+        <input type="radio" name="pregunta1" value="si"> Sí
+        <input type="radio" name="pregunta1" value="no"> No
+        <br><br>
+
+        <label for="pregunta2">¿Prefieres trabajar en equipo?</label><br>
+        <input type="radio" name="pregunta2" value="si"> Sí
+        <input type="radio" name="pregunta2" value="no"> No
+        <br><br>
+
+        <!-- Agrega más preguntas aquí según el test -->
+        
+        <button type="button" onclick="calcularResultado()">Obtener resultado</button>
+    </form>
+
+    <div id="resultado" style="display:none;">
+        <h2>Resultado:</h2>
+        <p id="mensajeResultado"></p>
+    </div>
+
+    <script>
+        function calcularResultado() {
+            var respuesta1 = document.querySelector('input[name="pregunta1"]:checked');
+            var respuesta2 = document.querySelector('input[name="pregunta2"]:checked');
+            // Agrega más variables para cada pregunta.
+
+            if (!respuesta1 || !respuesta2) {
+                alert("Por favor, responde todas las preguntas.");
+                return;
+            }
+
+            var mensaje = "";
+            if (respuesta1.value == "si" && respuesta2.value == "si") {
+                mensaje = "¡Quizá una carrera en negocios es ideal para ti!";
+            } else if (respuesta1.value == "no" && respuesta2.value == "no") {
+                mensaje = "¡Una carrera creativa podría ser la mejor opción!";
+            } else {
+                mensaje = "¡Explora más opciones y encuentra lo que te apasiona!";
+            }
+
+            // Mostrar el resultado
+            document.getElementById("mensajeResultado").textContent = mensaje;
+            document.getElementById("resultado").style.display = "block";
+        }
+    </script>
+</body>
+</html>
